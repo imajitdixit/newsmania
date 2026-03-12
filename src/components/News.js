@@ -36,8 +36,8 @@ export class News extends Component {
     const { country, category, pageSize, apiKey } = this.props;
     const { page } = this.state;
     
-    // ✅ FIXED — using correct apiKey passed via props
-    const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}&page=${page}&pageSize=${pageSize}`;
+    // ✅ Use Vercel Serverless Proxy to bypass browser/CORS restrictions
+    const url = `/api/news?country=${country}&category=${category}&apiKey=${apiKey}&page=${page}&pageSize=${pageSize}`;
     
     this.setState({ loading: true });
     let data = await fetch(url);
